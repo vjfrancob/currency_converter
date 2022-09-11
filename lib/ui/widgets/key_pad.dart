@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'one_key.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 // en este widget mostramos el keypad y los valores de las monedas
 class KeyPad extends StatefulWidget {
@@ -33,9 +34,19 @@ class _KeyPadState extends State<KeyPad> {
   void _onPressed(int k) {
     setState(() {
       if (k == 10) {
-        userInput= '';
+        userInput = '';
         _currency2 = 0;
         _currency1 = 0;
+      } else if (k == 11) {
+        if (userInput.length > 1) {
+          userInput = userInput.substring(0, userInput.length - 1);
+          _currency1 = int.parse(userInput);
+          _currency2 = _currency1 * widget.rate;
+        } else {
+          userInput = '';
+          _currency2 = 0;
+          _currency1 = 0;
+        }
       } else {
         var temp_input = k.toString();
         userInput += temp_input;
@@ -51,7 +62,7 @@ class _KeyPadState extends State<KeyPad> {
     // aquí garantizamos que cuando el widget refresca el estado va a cero
     _currency2 = 0;
     _currency1 = 0;
-    userInput= '';
+    userInput = '';
   }
 
   @override
@@ -64,7 +75,14 @@ class _KeyPadState extends State<KeyPad> {
             children: [
               Padding(
                 padding: const EdgeInsets.all(8.0),
-                child: Text(widget.textCurrency1),
+                child: Text(
+                  widget.textCurrency1,
+                  style: GoogleFonts.roboto(
+                    fontSize: 20,
+                    fontWeight: FontWeight.w700,
+                    color: Colors.white,
+                  ),
+                ),
               ),
               Expanded(
                 child: Container(),
@@ -75,10 +93,11 @@ class _KeyPadState extends State<KeyPad> {
                   child: Text(
                     _currency1.toString(),
                     textAlign: TextAlign.right,
-                    style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        color: Theme.of(context).colorScheme.secondary,
-                        fontSize: 35),
+                    style: GoogleFonts.roboto(
+                      fontSize: 30,
+                      //fontWeight: FontWeight.w700,
+                      color: Colors.white,
+                    ),
                   )),
             ],
           ),
@@ -87,7 +106,14 @@ class _KeyPadState extends State<KeyPad> {
             children: [
               Padding(
                 padding: const EdgeInsets.all(8.0),
-                child: Text(widget.textCurrency2),
+                child: Text(
+                  widget.textCurrency2,
+                  style: GoogleFonts.roboto(
+                    fontSize: 20,
+                    fontWeight: FontWeight.w700,
+                    color: Colors.white,
+                  ),
+                ),
               ),
               Expanded(
                 child: Container(),
@@ -98,10 +124,11 @@ class _KeyPadState extends State<KeyPad> {
                   child: Text(
                     num.parse(_currency2.toStringAsFixed(4)).toString(),
                     textAlign: TextAlign.right,
-                    style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        color: Theme.of(context).colorScheme.secondary,
-                        fontSize: 35),
+                    style: GoogleFonts.roboto(
+                      fontSize: 30,
+                      //fontWeight: FontWeight.w700,
+                      color: Colors.white,
+                    ),
                   ))
             ],
           ),
@@ -110,9 +137,9 @@ class _KeyPadState extends State<KeyPad> {
             child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: <Widget>[
-                  OneKey(number:7,callback:_onPressed),
-                  OneKey(number:8,callback:_onPressed),
-                  OneKey(number:9,callback:_onPressed)
+                  OneKey(number: 7, callback: _onPressed),
+                  OneKey(number: 8, callback: _onPressed),
+                  OneKey(number: 9, callback: _onPressed)
                 ]),
           ),
           Expanded(
@@ -120,9 +147,9 @@ class _KeyPadState extends State<KeyPad> {
             child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: <Widget>[
-                  OneKey(number:4,callback:_onPressed),
-                  OneKey(number:5,callback:_onPressed),
-                  OneKey(number:6,callback:_onPressed)
+                  OneKey(number: 4, callback: _onPressed),
+                  OneKey(number: 5, callback: _onPressed),
+                  OneKey(number: 6, callback: _onPressed)
                 ]),
           ),
           Expanded(
@@ -130,9 +157,9 @@ class _KeyPadState extends State<KeyPad> {
             child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: <Widget>[
-                  OneKey(number:1,callback:_onPressed),
-                  OneKey(number:2,callback:_onPressed),
-                  OneKey(number:3,callback:_onPressed)
+                  OneKey(number: 1, callback: _onPressed),
+                  OneKey(number: 2, callback: _onPressed),
+                  OneKey(number: 3, callback: _onPressed)
                 ]),
           ),
           Expanded(
@@ -144,18 +171,38 @@ class _KeyPadState extends State<KeyPad> {
                   child: MaterialButton(
                       key: const Key("reset"),
                       padding: const EdgeInsets.fromLTRB(0, 20, 0, 20),
-                      color: Theme.of(context).colorScheme.secondary,
+                      color: Colors.black,
                       onPressed: () {
                         _onPressed(10);
                       },
-                      child: const Text("Reset",
-                          style: TextStyle(
-                            fontSize: 26.0,
-                            color: Colors.white,
-                          ))),
+                      child: Text(
+                        "AC",
+                        style: GoogleFonts.roboto(
+                          fontSize: 20,
+                          fontWeight: FontWeight.w700,
+                          color: Color.fromARGB(255, 233, 113, 43),
+                        ),
+                      )),
                 ),
               ),
-              OneKey(number:0,callback:_onPressed),
+              OneKey(number: 0, callback: _onPressed),
+              Expanded(
+                child: MaterialButton(
+                    key: const Key("clear"),
+                    padding: const EdgeInsets.fromLTRB(0, 20, 0, 20),
+                    color: Colors.black,
+                    onPressed: () {
+                      _onPressed(11);
+                    },
+                    child: Text(
+                      "⌫",
+                      style: GoogleFonts.roboto(
+                        fontSize: 20,
+                        fontWeight: FontWeight.w700,
+                        color: Color.fromARGB(255, 233, 113, 43),
+                      ),
+                    )),
+              )
             ]),
           )
         ]);

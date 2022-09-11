@@ -1,5 +1,6 @@
 import 'package:direct_select/direct_select.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import '../../utils/constants.dart';
 import '../widgets/key_pad.dart';
 import '../widgets/selection_item.dart';
@@ -32,14 +33,26 @@ class _ConverterPageState extends State<ConverterPage> {
     // El siguiente widget en el arbol es el Scaffold
     return Scaffold(
         appBar: AppBar(
-          title: const Text('Currency converter'),
+          centerTitle: true,
+          backgroundColor: Color.fromARGB(0, 0, 0, 0),
+          elevation:0,
+          title: Text('Conversor de Divisas',
+          style: GoogleFonts.roboto(
+            fontSize:19,
+              fontWeight: FontWeight.w700,
+              color: Colors.white,
+          ),
         ),
+        ),
+        backgroundColor: Colors.black,
         body: Column(children: [
           Row(
             children: [
               Expanded(
                 // selector para la primera moneda
                 child: DirectSelect(
+                    //backgroundColor: Color.fromARGB(191, 14, 141, 196),
+                    //selectionColor: Color.fromARGB(87, 255, 255, 255), 
                     itemExtent: 45.0,
                     selectedIndex: currency1,
                     backgroundColor: Theme.of(context).colorScheme.primary,
@@ -76,9 +89,6 @@ class _ConverterPageState extends State<ConverterPage> {
             ],
           ),
           Expanded(
-              // TODO
-              // los nombres de las monedas se pueden obtener en la lista currencies
-              // la tasa de cambio se puede obtener en la estructura de datos rates
               child: Center(
             child: KeyPad(
                 textCurrency1: currencies[currency1],

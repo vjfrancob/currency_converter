@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class OneKey extends StatelessWidget {
   const OneKey({Key? key, required this.number, required this.callback})
@@ -16,16 +17,19 @@ class OneKey extends StatelessWidget {
         padding: const EdgeInsets.fromLTRB(8, 8, 8, 8),
         child: MaterialButton(
             key: Key(number.toString()),
-            color: Theme.of(context).primaryColor,
+            color: Colors.black,
             padding: const EdgeInsets.fromLTRB(0, 20, 0, 20),
             onPressed: () {
               callback(number);
             },
-            child: Text(number.toString(),
-                style: const TextStyle(
-                  fontSize: 26.0,
-                  color: Colors.white,
-                ))),
+            child: Text(
+              number.toString(),
+              style: GoogleFonts.roboto(
+                fontSize: 25,
+                //fontWeight: FontWeight.w700,
+                color: Colors.white,
+              ),
+            )),
       ),
     );
   }
