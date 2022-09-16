@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'one_key.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:intl/intl.dart';
 
 // en este widget mostramos el keypad y los valores de las monedas
 class KeyPad extends StatefulWidget {
@@ -56,6 +57,12 @@ class _KeyPadState extends State<KeyPad> {
     });
   }
 
+  // Método que da formato a los números
+  String formatCurrency(double num) {
+    final formatter = NumberFormat('###,###,###,###.##', 'es_CO');
+    return formatter.format(num);
+  }
+
   @override
   void didUpdateWidget(covariant oldWidget) {
     super.didUpdateWidget(oldWidget);
@@ -78,9 +85,9 @@ class _KeyPadState extends State<KeyPad> {
                 child: Text(
                   widget.textCurrency1,
                   style: GoogleFonts.roboto(
-                    fontSize: 20,
+                    fontSize: 24,
                     fontWeight: FontWeight.w700,
-                    color: Colors.white,
+                    color: Color.fromARGB(255, 233, 113, 43),
                   ),
                 ),
               ),
@@ -91,7 +98,7 @@ class _KeyPadState extends State<KeyPad> {
                   padding: const EdgeInsets.all(8.0),
                   alignment: Alignment.centerRight,
                   child: Text(
-                    _currency1.toString(),
+                    formatCurrency(double.parse(_currency1.toString())),
                     textAlign: TextAlign.right,
                     style: GoogleFonts.roboto(
                       fontSize: 30,
@@ -109,9 +116,9 @@ class _KeyPadState extends State<KeyPad> {
                 child: Text(
                   widget.textCurrency2,
                   style: GoogleFonts.roboto(
-                    fontSize: 20,
+                    fontSize: 24,
                     fontWeight: FontWeight.w700,
-                    color: Colors.white,
+                    color: Color.fromARGB(255, 233, 113, 43),
                   ),
                 ),
               ),
@@ -122,7 +129,7 @@ class _KeyPadState extends State<KeyPad> {
                   padding: const EdgeInsets.all(8.0),
                   alignment: Alignment.centerRight,
                   child: Text(
-                    num.parse(_currency2.toStringAsFixed(4)).toString(),
+                    formatCurrency(double.parse(_currency2.toString())),
                     textAlign: TextAlign.right,
                     style: GoogleFonts.roboto(
                       fontSize: 30,
@@ -171,14 +178,14 @@ class _KeyPadState extends State<KeyPad> {
                   child: MaterialButton(
                       key: const Key("reset"),
                       padding: const EdgeInsets.fromLTRB(0, 20, 0, 20),
-                      color: Colors.black,
+                      color: Color.fromARGB(10, 255, 255, 255),
                       onPressed: () {
                         _onPressed(10);
                       },
                       child: Text(
                         "AC",
                         style: GoogleFonts.roboto(
-                          fontSize: 20,
+                          fontSize: 30,
                           fontWeight: FontWeight.w700,
                           color: Color.fromARGB(255, 233, 113, 43),
                         ),
@@ -187,21 +194,22 @@ class _KeyPadState extends State<KeyPad> {
               ),
               OneKey(number: 0, callback: _onPressed),
               Expanded(
-                child: MaterialButton(
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: MaterialButton(
                     key: const Key("clear"),
                     padding: const EdgeInsets.fromLTRB(0, 20, 0, 20),
-                    color: Colors.black,
+                    color: Color.fromARGB(10, 255, 255, 255),
                     onPressed: () {
                       _onPressed(11);
                     },
-                    child: Text(
-                      "⌫",
-                      style: GoogleFonts.roboto(
-                        fontSize: 20,
-                        fontWeight: FontWeight.w700,
-                        color: Color.fromARGB(255, 233, 113, 43),
-                      ),
-                    )),
+                    child: const Icon(
+                      Icons.backspace,
+                      size: 30,
+                      color: Color.fromARGB(255, 233, 113, 43),
+                    ),
+                  ),
+                ),
               )
             ]),
           )

@@ -10,13 +10,12 @@ class OneKey extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     return Expanded(
       child: Padding(
         padding: const EdgeInsets.fromLTRB(8, 8, 8, 8),
         child: MaterialButton(
             key: Key(number.toString()),
-            color: Colors.black,
+            color: Color.fromARGB(10, 255, 255, 255),
             padding: const EdgeInsets.fromLTRB(0, 20, 0, 20),
             onPressed: () {
               callback(number);
@@ -24,7 +23,7 @@ class OneKey extends StatelessWidget {
             child: Text(
               number.toString(),
               style: GoogleFonts.roboto(
-                fontSize: 25,
+                fontSize: 30,
                 //fontWeight: FontWeight.w700,
                 color: Colors.white,
               ),
