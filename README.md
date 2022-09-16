@@ -29,4 +29,6 @@ como en el caso de "AC" y "borrar". Al presionar cada botón se define la funci�
 
 https://github.com/vjfrancob/currency_converter.git
 
+
 ## Video de Explicación
+https://user-images.githubusercontent.com/111591094/190627476-d54f68c9-33c5-450b-8ede-d787968b5af8.mp4
