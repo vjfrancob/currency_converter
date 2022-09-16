@@ -33,16 +33,22 @@ class _ConverterPageState extends State<ConverterPage> {
     // El siguiente widget en el arbol es el Scaffold
     return Scaffold(
         appBar: AppBar(
+          leading: const Icon(
+            Icons.currency_exchange,
+            size: 36,
+            color: Color.fromARGB(255, 233, 113, 43),
+          ),
           centerTitle: true,
           backgroundColor: Color.fromARGB(0, 0, 0, 0),
-          elevation:0,
-          title: Text('Conversor de Divisas',
-          style: GoogleFonts.roboto(
-            fontSize:19,
+          elevation: 0,
+          title: Text(
+            'Conversor de Divisas',
+            style: GoogleFonts.roboto(
+              fontSize: 24,
               fontWeight: FontWeight.w700,
               color: Colors.white,
+            ),
           ),
-        ),
         ),
         backgroundColor: Colors.black,
         body: Column(children: [
@@ -52,7 +58,7 @@ class _ConverterPageState extends State<ConverterPage> {
                 // selector para la primera moneda
                 child: DirectSelect(
                     //backgroundColor: Color.fromARGB(191, 14, 141, 196),
-                    //selectionColor: Color.fromARGB(87, 255, 255, 255), 
+                    //selectionColor: Color.fromARGB(87, 255, 255, 255),
                     itemExtent: 45.0,
                     selectedIndex: currency1,
                     backgroundColor: Theme.of(context).colorScheme.primary,

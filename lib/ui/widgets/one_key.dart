@@ -15,7 +15,7 @@ class OneKey extends StatelessWidget {
         padding: const EdgeInsets.fromLTRB(8, 8, 8, 8),
         child: MaterialButton(
             key: Key(number.toString()),
-            color: Color.fromARGB(10, 255, 255, 255),
+            color: Color.fromARGB(25, 255, 255, 255),
             padding: const EdgeInsets.fromLTRB(0, 20, 0, 20),
             onPressed: () {
               callback(number);

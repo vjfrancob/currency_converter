@@ -178,7 +178,7 @@ class _KeyPadState extends State<KeyPad> {
                   child: MaterialButton(
                       key: const Key("reset"),
                       padding: const EdgeInsets.fromLTRB(0, 20, 0, 20),
-                      color: Color.fromARGB(10, 255, 255, 255),
+                      color: Color.fromARGB(25, 255, 255, 255),
                       onPressed: () {
                         _onPressed(10);
                       },
@@ -199,7 +199,7 @@ class _KeyPadState extends State<KeyPad> {
                   child: MaterialButton(
                     key: const Key("clear"),
                     padding: const EdgeInsets.fromLTRB(0, 20, 0, 20),
-                    color: Color.fromARGB(10, 255, 255, 255),
+                    color: Color.fromARGB(25, 255, 255, 255),
                     onPressed: () {
                       _onPressed(11);
                     },
