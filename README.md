@@ -31,4 +31,7 @@ https://github.com/vjfrancob/currency_converter.git
 
 
 ## Video de Explicación
-https://user-images.githubusercontent.com/111591094/190627476-d54f68c9-33c5-450b-8ede-d787968b5af8.mp4
+
+https://user-images.githubusercontent.com/111591094/190828312-df3e5301-8477-44e5-b858-06a35b6415d3.mp4
+
+
